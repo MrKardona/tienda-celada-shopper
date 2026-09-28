@@ -367,7 +367,7 @@ Pago: ${o.pago}`);O.set("nova-last-order",{order:n,name:o.nombre.split(" ")[0],w
       <div class="wrap">
         <div class="footer__top">
           <div class="footer__brand">
-            <a class="footer__logo" href="/"><span class="nav__mark">C</span><span>${i(s.name)}</span></a>
+            <a class="footer__logo" href="/">${document.querySelector(".nav__mark")?document.querySelector(".nav__mark").outerHTML:""}<span>${i(s.name)}</span></a>
             <p>Productos Apple originales y sellados. Entrega el mismo d\xEDa en ${i(s.sameDayCity)} y env\xEDos a toda Colombia.</p>
             <div class="footer__socials">${r("whatsapp",T("Hola "+s.name),"WhatsApp")}${r("instagram",s.instagram,"Instagram")}${r("tiktok",s.tiktok,"TikTok")}</div>
           </div>
