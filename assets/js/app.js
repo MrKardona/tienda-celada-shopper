@@ -204,7 +204,7 @@ Total: ${b(a.total)}${e}`},Qe=()=>A.filter(e=>e.tradeIn).map(e=>`Retoma solicita
       <a class="hero__media" href="${f.p(o,"color="+c.id)}"><img crossorigin="anonymous" src="${c.images[0]}" alt="${i(G(o,c))}" fetchpriority="high">${Re(o,c)}</a>
     </section>`})():""}
     <div class="wrap toolbar">
-      <p class="muted">${n.length} modelos nuevos \xB7 <a href="#usados">${r.length?`Ver usados (${r.length})`:"Usados"}</a></p>
+      <p class="muted">${n.length} modelos nuevos${e==="tesla"?"":` \xB7 <a href="#usados">${r.length?`Ver usados (${r.length})`:"Usados"}</a>`}</p>
       <label class="select">Ordenar
         <select id="sortSel">
           <option value="rec" ${d==="rec"?"selected":""}>Recomendados</option>
@@ -213,7 +213,7 @@ Total: ${b(a.total)}${e}`},Qe=()=>A.filter(e=>e.tradeIn).map(e=>`Retoma solicita
         </select></label>
     </div>
     <section class="grid wrap">${n.map(te).join("")}</section>
-    ${e==="tecnologia"||e==="accesorios"?"":`<section class="section wrap used" id="usados" aria-label="${i(t.name)} usados">
+    ${e==="tesla"||e==="tecnologia"||e==="accesorios"?"":`<section class="section wrap used" id="usados" aria-label="${i(t.name)} usados">
       <div class="used__head"><p class="label">Seminuevos</p><h2 class="h2">${i(t.name)} usados</h2><p class="lead">${i(s.usedText||"")}</p>${r.length?'<a class="btn btn--link" href="/usados/">Ver todos los usados \u203A</a>':""}</div>
       ${r.length?`<div class="grid">${r.map(te).join("")}</div>`:`<div class="used__empty"><p><b>Muy pronto tendremos ${i(t.name)} usados.</b> \xBFBuscas uno en particular? Te avisamos cuando llegue.</p><a class="btn btn--wa btn--sm" target="_blank" rel="noopener" href="${E(`Hola ${s.name}, busco un ${t.name} usado. \xBFMe avisan cuando tengan?`)}">Av\xEDsame por WhatsApp</a></div>`}
     </section>`}
@@ -304,7 +304,7 @@ Total: ${b(a.total)}${e}`},Qe=()=>A.filter(e=>e.tradeIn).map(e=>`Retoma solicita
           <li><span class="delivery__ico">${$("chat",22)}</span><div><b>\xBFDudas? Te asesoramos</b><br><span class="muted small">Escr\xEDbenos por WhatsApp y te respondemos en minutos.</span></div></li>
         </ul>
         <ul class="trust">
-          ${k(t)?`<li>${$("shield",16)} Original Apple \xB7 usado revisado</li><li>${$("check",16)} Fotos y video reales antes de comprar</li>`:`<li>${$("shield",16)} Original y sellado</li><li>${$("check",16)} Garant\xEDa de 1 a\xF1o</li>`}<li>${$("lock",16)} Pago seguro en Shopify</li><li>${$("back",16)} Retracto 5 d\xEDas h\xE1biles</li>
+          ${k(t)?`<li>${$("shield",16)} Original Apple \xB7 usado revisado</li><li>${$("check",16)} Fotos y video reales antes de comprar</li>`:t.cat==="tesla"?`<li>${$("shield",16)} Nuevo, en su empaque</li><li>${$("check",16)} Entrega inmediata</li>`:`<li>${$("shield",16)} Original y sellado</li><li>${$("check",16)} Garant\xEDa de 1 a\xF1o</li>`}<li>${$("lock",16)} Pago seguro en Shopify</li><li>${$("back",16)} Retracto 5 d\xEDas h\xE1biles</li>
         </ul>
         ${oe()}
       </div>
@@ -314,7 +314,7 @@ Total: ${b(a.total)}${e}`},Qe=()=>A.filter(e=>e.tradeIn).map(e=>`Retoma solicita
     ${na(t)}
     <section class="section wrap narrow pinfo">
       <details><summary>Garant\xEDa, env\xEDo y retracto</summary><div class="pinfo__text"><p><b>Garant\xEDa:</b> ${i((k(t)?s.usedWarranty:s.warranty)||"")}</p><p><b>Env\xEDo:</b> mismo d\xEDa en ${i(s.sameDayCity)} y ${i(s.otherCitiesDays)} al resto de Colombia con ${i((s.carriers||[]).join(", "))}.</p><p><b>Retracto:</b> 5 d\xEDas h\xE1biles desde la entrega para compras en l\xEDnea, con el producto sin usar y en su empaque original (Ley 1480 de 2011).</p></div></details>
-      <p class="about__seo">Compra tu ${i(t.name)} ${k(t)?"usado, original y revisado,":t.cat==="tecnologia"?"original":"original y sellado"} en ${i(s.name)}: entrega el mismo d\xEDa en ${i(s.sameDayCity)}, env\xEDos a toda Colombia en ${i(s.otherCitiesDays)} y pago con tarjeta de cr\xE9dito. Mira todos los <a href="${f.cat(t.cat)}">${i(W(t.cat))} disponibles</a>.</p>
+      <p class="about__seo">Compra tu ${i(t.name)} ${k(t)?"usado, original y revisado,":t.cat==="tesla"?"nuevo":t.cat==="tecnologia"?"original":"original y sellado"} en ${i(s.name)}: entrega el mismo d\xEDa en ${i(s.sameDayCity)}, env\xEDos a toda Colombia en ${i(s.otherCitiesDays)} y pago con tarjeta de cr\xE9dito. Mira todos los <a href="${f.cat(t.cat)}">${i(W(t.cat))} disponibles</a>.</p>
     </section>
     ${c.length?pe("Arma tu combo perfecto",c,`Lo que m\xE1s compran junto con ${i(t.name)}.`):""}
     <section class="section wrap narrow"><h2 class="h2 center">Preguntas frecuentes</h2>${me(ue)}</section>
@@ -335,7 +335,7 @@ Total: ${b(a.total)}${e}`},Qe=()=>A.filter(e=>e.tradeIn).map(e=>`Retoma solicita
         </div>
       </div>
       <div class="usa__strip">${e.photos.map(([t,o])=>`<figure class="usa__photo reveal"><img src="${t}" alt="${i(o)}" loading="lazy" decoding="async"><figcaption>${i(o)}</figcaption></figure>`).join("")}</div>
-    </section>`}function na(e){const a=(window.PRODUCT_INFO||{})[e.id]||{},t=a.highlights||[],o=a.gallery||[],n=a.features||[],r=a.inBox||[],d=k(e),p=e.cat==="tecnologia"?[["check","Productos originales",`${i(e.brand||"Producto")} original, con el respaldo de Celada Shopper.`],["shield","Garant\xEDa","Te contamos la garant\xEDa y el estado de cada equipo por WhatsApp antes de comprar."],["store","Respaldo Celada Shopper","Compras con el respaldo de Celada Shopper, una empresa real con operaci\xF3n en Colombia y USA."],["chat","Te acompa\xF1amos","Resolvemos tus dudas por WhatsApp antes y despu\xE9s de la compra."]]:d?[["shield","Garant\xEDa de 3 meses","Equipo original de Apple, revisado antes de la venta. Preg\xFAntanos por WhatsApp por la bater\xEDa."],["camera","Fotos y video reales","Antes de comprar te enviamos fotos y video del equipo exacto por WhatsApp."],["store","Respaldo Celada Shopper","Compras con el respaldo de Celada Shopper, una empresa real con operaci\xF3n en Colombia y USA."],["chat","Te acompa\xF1amos","Resolvemos tus dudas por WhatsApp antes y despu\xE9s de la compra."]]:[["shield","Garant\xEDa de 1 a\xF1o","Todos nuestros productos nuevos, incluidos los celulares, tienen un a\xF1o de garant\xEDa."],["check","100 % originales","Productos Apple originales, nuevos y en su caja sellada."],["store","Respaldo Celada Shopper","Cuentas con el respaldo y la garant\xEDa de Celada Shopper, una empresa real con operaci\xF3n en Colombia y USA."],["chat","Te acompa\xF1amos","Si necesitas usar la garant\xEDa, te ayudamos por WhatsApp en todo el proceso."]],c=s.team&&s.team.photo;return`<section class="pstory">
+    </section>`}function na(e){const a=(window.PRODUCT_INFO||{})[e.id]||{},t=a.highlights||[],o=a.gallery||[],n=a.features||[],r=a.inBox||[],d=k(e),z9=e.cat==="tesla",p=z9?[["check","Accesorios nuevos","Nuevos y en su empaque. Cada ficha indica si es original Tesla o compatible."],["shield","Compatibilidad confirmada","Antes de comprar te confirmamos por WhatsApp que sirve para el modelo y a\xF1o de tu Tesla."],["store","Respaldo Celada Shopper","Compras con el respaldo de Celada Shopper, una empresa real con operaci\xF3n en Colombia y USA."],["chat","Te acompa\xF1amos","Resolvemos tus dudas por WhatsApp antes y despu\xE9s de la compra."]]:e.cat==="tecnologia"?[["check","Productos originales",`${i(e.brand||"Producto")} original, con el respaldo de Celada Shopper.`],["shield","Garant\xEDa","Te contamos la garant\xEDa y el estado de cada equipo por WhatsApp antes de comprar."],["store","Respaldo Celada Shopper","Compras con el respaldo de Celada Shopper, una empresa real con operaci\xF3n en Colombia y USA."],["chat","Te acompa\xF1amos","Resolvemos tus dudas por WhatsApp antes y despu\xE9s de la compra."]]:d?[["shield","Garant\xEDa de 3 meses","Equipo original de Apple, revisado antes de la venta. Preg\xFAntanos por WhatsApp por la bater\xEDa."],["camera","Fotos y video reales","Antes de comprar te enviamos fotos y video del equipo exacto por WhatsApp."],["store","Respaldo Celada Shopper","Compras con el respaldo de Celada Shopper, una empresa real con operaci\xF3n en Colombia y USA."],["chat","Te acompa\xF1amos","Resolvemos tus dudas por WhatsApp antes y despu\xE9s de la compra."]]:[["shield","Garant\xEDa de 1 a\xF1o","Todos nuestros productos nuevos, incluidos los celulares, tienen un a\xF1o de garant\xEDa."],["check","100 % originales","Productos Apple originales, nuevos y en su caja sellada."],["store","Respaldo Celada Shopper","Cuentas con el respaldo y la garant\xEDa de Celada Shopper, una empresa real con operaci\xF3n en Colombia y USA."],["chat","Te acompa\xF1amos","Si necesitas usar la garant\xEDa, te ayudamos por WhatsApp en todo el proceso."]],c=s.team&&s.team.photo;return`<section class="pstory">
       <div class="wrap narrow pstory__head reveal">
         <p class="eyebrow">Acerca del ${i(e.name)}</p>
         <h2 class="pstory__title">${i(a.headline||e.tagline||e.name)}</h2>
@@ -349,10 +349,10 @@ Total: ${b(a.total)}${e}`},Qe=()=>A.filter(e=>e.tradeIn).map(e=>`Retoma solicita
         ${a.compat?`<p class="pspec__compat reveal">${$("check",18)} <span><b>Compatibilidad:</b> ${i(a.compat)}</span></p>`:""}
       </div>`:""}
       <div class="wrap backing reveal${c?" backing--team":""}">
-        ${c?`<figure class="backing__photo"><img src="${i(s.team.photo)}" alt="${i(s.team.caption||"Nuestro equipo")}" loading="lazy">${s.team.caption?`<figcaption>${i(s.team.caption)}</figcaption>`:""}</figure>`:""}
+        ${c?`<figure class="backing__photo"><img src="${i(s.team.photo)}" alt="${i(s.team.caption||"Nuestro equipo")}" loading="lazy">${s.team.caption&&!z9?`<figcaption>${i(s.team.caption)}</figcaption>`:""}</figure>`:""}
         <div class="backing__body">
           <p class="eyebrow">Compra con respaldo</p>
-          <h2 class="h2">${d?"Usado, revisado y con 3 meses de garant\xEDa.":"Original, con garant\xEDa de un a\xF1o."}</h2>
+          <h2 class="h2">${z9?"Accesorios para tu Tesla, con respaldo real.":d?"Usado, revisado y con 3 meses de garant\xEDa.":"Original, con garant\xEDa de un a\xF1o."}</h2>
           <ul class="backing__list">${p.map(([u,g,D])=>`<li><span class="backing__ico">${$(u,22)}</span><div><b>${i(g)}</b><span>${i(D)}</span></div></li>`).join("")}</ul>
           <a class="btn btn--wa btn--sm" target="_blank" rel="noopener" href="${E(`Hola ${s.name}, tengo una pregunta sobre la garant\xEDa del ${e.name}.`)}">Preguntar por WhatsApp</a>
         </div>
